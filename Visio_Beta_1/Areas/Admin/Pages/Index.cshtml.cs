@@ -17,5 +17,10 @@ namespace Visio_Beta_1.Areas.Admin.Pages
         {
             return RedirectToPage("Livres", "Admin", "?Index%Des%livres");
         }
+        
+        public async Task<IActionResult> OnGetCategories()
+        {
+            return RedirectToPage("Categories", "Admin", "?Index%Des%Categories%All");
+        }
     }
 }
