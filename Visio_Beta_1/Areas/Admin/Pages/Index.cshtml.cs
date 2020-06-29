@@ -12,5 +12,10 @@ namespace Visio_Beta_1.Areas.Admin.Pages
         public void OnGet()
         {
         }
+        
+        public async Task<IActionResult> OnGetLivres()
+        {
+            return RedirectToPage("Livres", "Admin", "?Index%Des%livres");
+        }
     }
 }
