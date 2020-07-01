@@ -37,5 +37,10 @@ namespace Visio_Beta_1.Areas.Admin.Pages
 
             return RedirectToPage();
         }
+
+        public IActionResult OnGetCancel()
+        {
+            return RedirectToPage("Categories", "Admin", "$%Categories%GetAll%&ID");
+        }
     }
 }
