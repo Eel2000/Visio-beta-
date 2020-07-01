@@ -23,9 +23,10 @@ namespace Visio_Beta_1.Areas.Admin.Pages
 
         public void OnGet()
         {
+            
         }
 
-        public async Task<IActionResult> OnPostSave()
+        public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
@@ -38,7 +39,7 @@ namespace Visio_Beta_1.Areas.Admin.Pages
             return RedirectToPage();
         }
 
-        public IActionResult OnGetCancel()
+        public IActionResult OnPostCancel()
         {
             return RedirectToPage("Categories", "Admin", "$%Categories%GetAll%&ID");
         }

@@ -3,28 +3,33 @@
 @{
     ViewData["Title"] = "Add Category";
 }
-    <br />
-    <br />
-    <br />
-    <div class="card shadow-lg col-6 justify-content-sm-center offset-3 pt-lg-3 mt-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly"></div>
-            <div class="form-group row p-3">
-                <div class="col-3">
-                    <label asp-for="Category.Designation"></label>
-                </div>
-                <div class="col-6">
-                    <input type="text" asp-for="Category.Designation" class="form-control" placeholder="Designation" />
-                    <span asp-validation-for="Category.Designation" class="text-warning"></span>
-                </div>
+<br />
+<br />
+<br />
+<br />
+<div class="card shadow-lg col-6 justify-content-sm-center offset-3 pt-lg-3 mt-4">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row p-3">
+            <div class="col-3">
+                <label asp-for="Category.Designation"></label>
             </div>
-            <div class="form-group row offset-4">
-                <div class="col-3">
-                    <button asp-page-handler="Save" class="btn btn-success">Save</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-secondary" asp-page-handler="Cancel">Cancel</button>
-                </div>
+            <div class="col-6">
+                <input type="text" asp-for="Category.Designation" class="form-control" placeholder="Designation" />
+                <span asp-validation-for="Category.Designation" class="text-warning"></span>
             </div>
-        </form>
-    </div>
+        </div>
+        <div class="form-group row offset-4">
+            <div class="col-3">
+                <input type="submit" asp-page-handler="Save" class="btn btn-success" />
+            </div>
+            <div class="col-3">
+                <button asp-page-handler="Cancel" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
