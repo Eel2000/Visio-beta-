@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -35,6 +36,37 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
             Categories =  _db.Categories.Select(Cat =>
                 new SelectListItem { Value = Cat.Id.ToString(), Text = Cat.Designation }
             ).ToList();
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            if(ModelState.IsValid)
+            {
+                using (var MStream = new MemoryStream())
+                {
+                    await BookViewModel.Fichier.CopyToAsync(MStream);
+
+                    if(MStream.Length < 4194304)
+                    {
+                        var NewBook = new Book
+                        {
+                            Title = Book.Title,
+                            Author = Book.Author,
+                            Pages = Book.Pages,
+                            Year = Book.Year,
+                            BookCategory = Book.BookCategory,
+                            Content = MStream.ToArray()
+                        };
+
+                        await _db.Books.AddAsync(NewBook);
+                        await _db.SaveChangesAsync();
+
+                        return RedirectToPage("Livres", "Admin", "$%GetALl$%^Books*&^Fr&Db@");
+                    }
+                }
+            }
+
+            return RedirectToPage();
         }
 
 
