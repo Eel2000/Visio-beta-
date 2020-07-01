@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Visio_Beta_1.Data;
 using Visio_Beta_1.Data.Models;
 
@@ -26,9 +27,17 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
         [BindProperty]
         public Book Book { get; set; }
 
-        public void OnGet()
+        [BindProperty]
+        public List<SelectListItem> Categories { get; set; }
+
+        public async Task OnGet()
         {
+            Categories =  _db.Categories.Select(Cat =>
+                new SelectListItem { Value = Cat.Id.ToString(), Text = Cat.Designation }
+            ).ToList();
         }
+
+
     }
 
     public class BookViewModel

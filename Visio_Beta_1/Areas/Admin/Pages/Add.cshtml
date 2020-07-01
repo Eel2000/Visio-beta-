@@ -11,51 +11,51 @@
     <div class="card shadow-lg col-6 justify-content-md-center offset-3 pt-lg-3 mt-4">
         <form method="post">
             <div class="form-group row p-3">
-                <div class="col-3">
-                    <label></label>
+                <div class="col-2">
+                    <label asp-for="Book.Title"></label>
                 </div>
                 <div class="col-8">
-                    <input type="text"  class="form-control" />
+                    <input type="text" asp-for="Book.Title"  class="form-control" />
                 </div>
             </div>
             <div class="form-group row p-3">
-                <div class="col-3">
-                    <label></label>
+                <div class="col-2">
+                    <label asp-for="Book.Author"></label>
                 </div>
                 <div class="col-8">
-                    <input type="text"  class="form-control" />
+                    <input type="text" asp-for="Book.Author" class="form-control" />
                 </div>
             </div>
             <div class="form-group row p-3">
-                <div class="col-3">
-                    <label></label>
+                <div class="col-2">
+                    <label asp-for="Book.Pages"></label>
                 </div>
                 <div class="col-8">
-                    <input type="text"  class="form-control" />
+                    <input type="text" asp-for="Book.Pages" class="form-control" />
                 </div>
             </div>
             <div class="form-group row p-3">
-                <div class="col-3">
-                    <label></label>
+                <div class="col-2">
+                    <label asp-for="Book.Year"></label>
                 </div>
                 <div class="col-8">
-                    <input type="text"  class="form-control" />
+                    <input type="text" asp-for="Book.Year" class="form-control" />
                 </div>
             </div>
             <div class="form-group row p-3">
-                <div class="col-3">
-                    <label></label>
+                <div class="col-2">
+                    <label asp-for="Book.BookCategory"></label>
                 </div>
                 <div class="col-8">
-                    <input type="text"  class="form-control" />
+                    <select type="text"  asp-for="Book.BookCategory" class="dropdown text-info" asp-items="Model.Categories"></select>
                 </div>
             </div> 
             <div class="form-group row p-3">
-                <div class="col-3">
-                    <label></label>
+                <div class="col-2">
+                    <label asp-for="Book.Content"></label>
                 </div>
                 <div class="col-8">
-                    <input type="file"  class="form-control-file" />
+                    <input type="file" asp-for="BookViewModel.Fichier" class="form-control-file" />
                 </div>
             </div>
             <div class="form-group row p-3 offset-3">

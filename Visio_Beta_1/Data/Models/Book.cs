@@ -24,6 +24,7 @@ namespace Visio_Beta_1.Data.Models
         public string Year { get; set; }
 
         [Required]
+        [Display(Name ="Categories")]
         public Category BookCategory { get; set; }
 
         [Required]
