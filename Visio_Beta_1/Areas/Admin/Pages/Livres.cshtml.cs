@@ -26,5 +26,10 @@ namespace Visio_Beta_1.Areas.Admin.Pages
         {
             GetBooks = await _db.Books.ToListAsync();
         }
+        
+        public IActionResult OnGetAdd()
+        {
+           return RedirectToPage("Add","Admin","$Page_Handelr$%^AddNew#$&book*");
+        }
     }
 }
