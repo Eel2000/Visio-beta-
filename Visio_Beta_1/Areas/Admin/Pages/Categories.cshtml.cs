@@ -28,9 +28,14 @@ namespace Visio_Beta_1.Areas.Admin.Pages
             GetCategories = await _db.Categories.ToListAsync();
         }
 
+        //public async Task<IActionResult> OnGetCategories()
+        //{
+        //    return RedirectToPage("Categories", "Admin", "?Index%Des%Categories%All");
+        //}
+
         public IActionResult OnGetCategories()
         {
-            return RedirectToPage("Categories", "Admin", "$%Goto$%page&Admin=#$5%Add%new%categori%");
+            return RedirectToPage("AddCategory", "Admin", "$%Goto$%page&Admin=#$5%Add%new%categori%");
         }
     }
 }
