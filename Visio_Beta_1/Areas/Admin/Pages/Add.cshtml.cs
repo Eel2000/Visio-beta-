@@ -25,8 +25,8 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
         [BindProperty]
         public BookViewModel BookViewModel { get; set; }
 
-        [BindProperty]
-        public Book Book { get; set; }
+        //[BindProperty]
+        //public Book Book { get; set; }
 
         [BindProperty]
         public List<SelectListItem> Categories { get; set; }
@@ -50,11 +50,11 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
                     {
                         var NewBook = new Book
                         {
-                            Title = Book.Title,
-                            Author = Book.Author,
-                            Pages = Book.Pages,
-                            Year = Book.Year,
-                            BookCategory = Book.BookCategory,
+                            Title = BookViewModel.Title,
+                            Author = BookViewModel.Author,
+                            Pages = BookViewModel.Pages,
+                            Year = BookViewModel.Year,
+                            BookCategory = BookViewModel.BookCategory,
                             Content = MStream.ToArray()
                         };
 
@@ -74,6 +74,22 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
 
     public class BookViewModel
     {
+        [Required]
+        public string Title { get; set; }
+
+        [Required]
+        public string Author { get; set; }
+
+        [Required]
+        public string Pages { get; set; }
+
+        [Required]
+        public string Year { get; set; }
+
+        [Required]
+        [Display(Name = "Categories")]
+        public Category BookCategory { get; set; }
+
         [Required]
         public IFormFile Fichier { get; set; }
     }
