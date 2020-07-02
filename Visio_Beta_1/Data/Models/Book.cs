@@ -23,7 +23,10 @@ namespace Visio_Beta_1.Data.Models
         [Required]
         public string Year { get; set; }
 
-        [Required]
+        /// <summary>
+        /// this categories must be required but its does not workl
+        /// we'll try somthing different
+        /// </summary>
         [Display(Name ="Categories")]
         public Category BookCategory { get; set; }
 

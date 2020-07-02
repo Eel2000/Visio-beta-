@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Visio_Beta_1.Data;
 using Visio_Beta_1.Data.Models;
 
@@ -29,13 +30,11 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
         //public Book Book { get; set; }
 
         [BindProperty]
-        public List<SelectListItem> Categories { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
 
         public async Task OnGet()
         {
-            Categories =  _db.Categories.Select(Cat =>
-                new SelectListItem { Value = Cat.Id.ToString(), Text = Cat.Designation }
-            ).ToList();
+            Categories = await _db.Categories.ToListAsync();
         }
 
         public async Task<IActionResult> OnPost()
@@ -54,7 +53,7 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
                             Author = BookViewModel.Author,
                             Pages = BookViewModel.Pages,
                             Year = BookViewModel.Year,
-                            BookCategory = BookViewModel.BookCategory,
+                           // BookCategory = _db.Categories.Find(Categories.FirstOrDefault()),
                             Content = MStream.ToArray()
                         };
 
@@ -86,9 +85,9 @@ namespace Visio_Beta_1.Areas.Admin.Pages.Shared
         [Required]
         public string Year { get; set; }
 
-        [Required]
+
         [Display(Name = "Categories")]
-        public Category BookCategory { get; set; }
+        public Category BookCategory { get; set; } = null;
 
         [Required]
         public IFormFile Fichier { get; set; }

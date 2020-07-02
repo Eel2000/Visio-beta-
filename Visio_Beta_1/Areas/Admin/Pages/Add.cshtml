@@ -9,7 +9,8 @@
 </div>
 
 <div class="card shadow-lg col-6 justify-content-md-center offset-3 pt-lg-3 mt-4">
-    <form method="post">
+    @* here we must add enctype="multipart/form-data" for allowing file uplqoding *@
+    <form method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly"></div>
         <div class="form-group row p-3">
             <div class="col-2">
@@ -43,24 +44,30 @@
                 <label asp-for="BookViewModel.Year"></label>
             </div>
             <div class="col-8">
-                <input type="text" asp-for="BookViewModel.Year" class="form-control" />                    <span class="text-warning" asp-validation-for="BookViewModel.Title"></span>
+                <input type="text" asp-for="BookViewModel.Year" class="form-control" />
                 <span class="text-warning" asp-validation-for="BookViewModel.Year"></span>
             </div>
         </div>
-        <div class="form-group row p-3">
+        @*<div class="form-group row p-3">
             <div class="col-2">
                 <label asp-for="BookViewModel.BookCategory"></label>
             </div>
             <div class="col-8">
-                <select asp-for="BookViewModel.BookCategory" class="dropdown text-info" asp-items="Model.Categories"></select>
+                <select class="dropdown text-info" asp-for="BookViewModel.BookCategory">
+                    @foreach (var item in Model.Categories)
+                    {
+                        <option value="@item.Id">@item.Designation</option>
+                    }
+                </select>
+
             </div>
-        </div>
+        </div>*@
         <div class="form-group row p-3">
             <div class="col-2">
-                <label asp-for="BookViewModel.Fichier"></label>
+                <label name="Categories" asp-for="BookViewModel.Fichier"></label>
             </div>
             <div class="col-8">
-                <input type="file" asp-for="BookViewModel.Fichier" class="form-control-file" />                    <span class="text-warning" asp-validation-for="BookViewModel.Title"></span>
+                <input type="file" asp-for="BookViewModel.Fichier" class="form-control-file" />
                 <span class="text-warning" asp-validation-for="BookViewModel.Fichier"></span>
             </div>
         </div>
